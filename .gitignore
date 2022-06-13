@@ -6,3 +6,6 @@ __pycache__
 *.pyc
 /.env*
 .idea
+*.jpg
+db.sqlite3
+/migrations/
