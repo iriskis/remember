@@ -10,7 +10,8 @@
       {% for remember in remember_list %}
       <li>
         <h2>{{ remember.title }}</h2> 
-        <p>{{remember.comment}}</p>
+        <p>{{ remember.comment }}</p>
+        <p <time datetime="{{ remember.date }}">{{ remember.date }}</time>.</p>
       </li>
       {% endfor %}
 
@@ -18,6 +19,6 @@
     {% else %}
       <h2>There are no places remember.</h2>
     {% endif %} 
-    <a href="/add-remembers/"><img width="50" src="/static/pictures/plus.png" data-toggle="tooltip" title="Add remember"></a>
+    <a href="/app/add-remember/"><img width="50" src="/static/pictures/plus.png" data-toggle="tooltip" title="Add remember"></a>
 
 {% endblock %}

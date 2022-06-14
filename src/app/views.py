@@ -2,8 +2,11 @@ from django.shortcuts import render
 from django.views import generic
 from django.shortcuts import render
 from django.utils import timezone
+from django.http import HttpResponseRedirect
+
 
 from .models import User, Remember
+from .forms import RememberForm
 
 # Create your views here.
 
@@ -14,7 +17,7 @@ def index(request):
         print(user.get_full_name())
         full_name = user.get_full_name()
         username = user.username
-        remembers = Remember.objects.filter(author=username)
+        remembers = Remember.objects.filter(author=username).order_by('-date')
         return render(request, 
             'app/remember_list.html',
             context={'remember_list': remembers, 'name': full_name})
@@ -22,13 +25,19 @@ def index(request):
         return render(request, 'auth.html', context={})
 
 def add_remember(request):    
-    user = request.user
-    if request.user.is_authenticated:
-        full_name = user.get_full_name()
-        username = user.username
-        remembers = Remember.objects.filter(author=username)
-        return render(request, 
-            'app/remember_list.html',
-            context={'remember_list': remembers, 'name': full_name})
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/')
+
+    if request.method == 'POST':
+        form = RememberForm(request.POST)
+        if form.is_valid():
+            remember = Remember()
+            remember.author = request.user.username
+            remember.title = form.cleaned_data['title']
+            remember.comment = form.cleaned_data['comment']
+            remember.date = form.cleaned_data['date']
+            remember.save()
+            return HttpResponseRedirect('/')
     else:
-        return render(request, 'auth.html', context={})
+        form = RememberForm()
+        return render(request, 'form.html', {'form': form})
