@@ -1,7 +1,9 @@
-import requests
 import logging
 
+import requests
+
 from .models import Userpic
+
 
 def choose_picture(vk_response):
     if (vk_response['count'] == 0):

@@ -1,5 +1,7 @@
-from django import forms
 import datetime
+
+from django import forms
+
 
 class RememberForm(forms.Form):
     title = forms.CharField(max_length=100)

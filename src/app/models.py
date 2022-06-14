@@ -1,5 +1,7 @@
+import uuid  # Required for unique book instances
+
 from django.db import models
-import uuid # Required for unique book instances
+
 
 class Remember(models.Model):
     author = models.CharField(max_length=100, null=True)

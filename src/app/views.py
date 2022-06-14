@@ -1,12 +1,9 @@
-from django.shortcuts import render
-from django.views import generic
-from django.shortcuts import render
-from django.utils import timezone
-from django.http import HttpResponseRedirect
 from django.contrib.auth import logout as auth_logout
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
 
-from .models import Remember, Userpic
 from .forms import RememberForm
+from .models import Remember, Userpic
 
 # Create your views here.
 
