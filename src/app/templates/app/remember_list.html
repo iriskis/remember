@@ -5,8 +5,10 @@
 
     {% if remember_list %}
     <h2><em>Owner: {{ name }} </em></h2>
-    <ul>
-
+    <div class="btn-logout">
+        <a href="/app/logout/"><img width="50" src="/static/pictures/logout.png" data-toggle="tooltip" title="Logout"></a>
+    </div>
+        <ul>
       {% for remember in remember_list %}
       <li>
         <h2>{{ remember.title }}</h2> 

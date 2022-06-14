@@ -3,7 +3,7 @@ from django.views import generic
 from django.shortcuts import render
 from django.utils import timezone
 from django.http import HttpResponseRedirect
-
+from django.contrib.auth import logout as auth_logout
 
 from .models import User, Remember
 from .forms import RememberForm
@@ -41,3 +41,9 @@ def add_remember(request):
     else:
         form = RememberForm()
         return render(request, 'form.html', {'form': form})
+
+
+
+def logout(request):
+    auth_logout(request)
+    return HttpResponseRedirect('/')

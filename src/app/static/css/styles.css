@@ -3,3 +3,10 @@
     padding: 0;
     list-style: none;
 }
+
+.btn-logout {
+    position: absolute; /* Абсолютное позиционирование */
+    top: 15px; /* Положение от нижнего края */
+    right: 15px; /* Положение от правого края */
+    line-height: 1px;
+}
