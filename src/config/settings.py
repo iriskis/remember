@@ -133,9 +133,10 @@ AUTHENTICATION_BACKENDS = (
 
 LOGIN_REDIRECT_URL = '/'
 
-# SOCIAL_AUTH_VK_OAUTH2_SCOPE = []
+SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['photos']
 
 SOCIAL_AUTH_PIPELINE = (
+
     'social.pipeline.social_auth.social_details',
     'social.pipeline.social_auth.social_uid',
     'social.pipeline.social_auth.auth_allowed',
@@ -145,5 +146,5 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.associate_user',
     'social.pipeline.social_auth.load_extra_data',
     'social.pipeline.user.user_details',
-    'app.pipeline.get_avatar',
+    'app.pipeline.store_userpic',
 )

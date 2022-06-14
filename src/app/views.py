@@ -5,7 +5,7 @@ from django.utils import timezone
 from django.http import HttpResponseRedirect
 from django.contrib.auth import logout as auth_logout
 
-from .models import User, Remember
+from .models import Remember, Userpic
 from .forms import RememberForm
 
 # Create your views here.
