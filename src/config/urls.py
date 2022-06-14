@@ -24,6 +24,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('app/', include('app.urls')),
+    path('', include('social_django.urls')),
     path('', RedirectView.as_view(url='/app/', permanent=True)),
 ]
 

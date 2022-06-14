@@ -1,0 +1,23 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Remember List</h1>
+
+    {% if remember_list %}
+    <h2><em>Owner: {{ name }} </em></h2>
+    <ul>
+
+      {% for remember in remember_list %}
+      <li>
+        <h2>{{ remember.title }}</h2> 
+        <p>{{remember.comment}}</p>
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <h2>There are no places remember.</h2>
+    {% endif %} 
+    <a href="/add-remembers/"><img width="50" src="/static/pictures/plus.png" data-toggle="tooltip" title="Add remember"></a>
+
+{% endblock %}

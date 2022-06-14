@@ -1,15 +1,34 @@
 from django.shortcuts import render
+from django.views import generic
+from django.shortcuts import render
+from django.utils import timezone
 
-# Create your views here.
 from .models import User, Remember
 
-def index(request):
-    num_users=User.objects.count()
-    num_remebers=Remember.objects.count()  
-    # Отрисовка HTML-шаблона index.html с данными внутри
-    # переменной контекста context
-    return render(
-        request,
-        'index.html',
-        context={'num_users':num_users, 'num_remebers':num_remebers},
-    )
+# Create your views here.
+
+def index(request):    
+    user = request.user
+    if request.user.is_authenticated:
+        print(user.email)
+        print(user.get_full_name())
+        full_name = user.get_full_name()
+        username = user.username
+        remembers = Remember.objects.filter(author=username)
+        return render(request, 
+            'app/remember_list.html',
+            context={'remember_list': remembers, 'name': full_name})
+    else:
+        return render(request, 'auth.html', context={})
+
+def add_remember(request):    
+    user = request.user
+    if request.user.is_authenticated:
+        full_name = user.get_full_name()
+        username = user.username
+        remembers = Remember.objects.filter(author=username)
+        return render(request, 
+            'app/remember_list.html',
+            context={'remember_list': remembers, 'name': full_name})
+    else:
+        return render(request, 'auth.html', context={})
