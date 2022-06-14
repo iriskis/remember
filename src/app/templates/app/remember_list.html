@@ -1,26 +1,29 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-    <h1>Remember List</h1>
-
-    {% if remember_list %}
-    <h2><em>Owner: {{ name }} </em></h2>
+    <h1>Your remember list</h1>
+    <div class="block-avatar">
+        <img src="{{ pic }}" alt="Avatar" class="avatar">
+        <h2>{{ name }}</h2>    
+    </div>
+    <a href="/app/add-remember/"><img width="50" src="/static/pictures/plus.png" data-toggle="tooltip" title="Add remember"></a>
     <div class="btn-logout">
         <a href="/app/logout/"><img width="50" src="/static/pictures/logout.png" data-toggle="tooltip" title="Logout"></a>
     </div>
+    {% if remember_list %}
         <ul>
       {% for remember in remember_list %}
-      <li>
-        <h2>{{ remember.title }}</h2> 
+      <li class="remember">
+        <h3>{{ remember.title }}</h3> 
         <p>{{ remember.comment }}</p>
         <p <time datetime="{{ remember.date }}">{{ remember.date }}</time>.</p>
       </li>
+      <hr>
       {% endfor %}
 
     </ul>
     {% else %}
       <h2>There are no places remember.</h2>
     {% endif %} 
-    <a href="/app/add-remember/"><img width="50" src="/static/pictures/plus.png" data-toggle="tooltip" title="Add remember"></a>
 
 {% endblock %}

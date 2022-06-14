@@ -18,9 +18,12 @@ def index(request):
         full_name = user.get_full_name()
         username = user.username
         remembers = Remember.objects.filter(author=username).order_by('-date')
+        userpic = Userpic.objects.filter(username=username).first()
+        pic = userpic.pic if userpic else None
+            
         return render(request, 
             'app/remember_list.html',
-            context={'remember_list': remembers, 'name': full_name})
+            context={'remember_list': remembers, 'name': full_name, 'pic': pic})
     else:
         return render(request, 'auth.html', context={})
 

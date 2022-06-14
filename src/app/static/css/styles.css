@@ -5,8 +5,15 @@
 }
 
 .btn-logout {
-    position: absolute; /* Абсолютное позиционирование */
-    top: 15px; /* Положение от нижнего края */
-    right: 15px; /* Положение от правого края */
+    position: absolute;
+    top: 15px; 
+    right: 15px;
     line-height: 1px;
 }
+
+.avatar {
+    vertical-align: middle;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  }
