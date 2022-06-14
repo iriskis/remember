@@ -2,7 +2,7 @@ from django.db import models
 import uuid # Required for unique book instances
 
 class Remember(models.Model):
-    user_id = models.ForeignKey('User', on_delete=models.SET_NULL, null=True)
+    author = models.CharField(max_length=100, null=True)
     title = models.CharField(max_length=200)
     comment = models.TextField(max_length=1000)
 
