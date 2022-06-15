@@ -1,4 +1,4 @@
-# Places Remember - web-application so that people can store their impressions of the visited places
+# Places Remember - web-application to store memories of visited places
 
 ## Stack
 
