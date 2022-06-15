@@ -9,4 +9,3 @@ __pycache__
 *.jpg
 db.sqlite3
 migrations/
-credentials.py
