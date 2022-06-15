@@ -1,7 +1,11 @@
 # Places Remember - web-application so that people can store their impressions of the visited places
 
-## Credentials
-To run the application you need to add  credentials.py in /src/config/. And set up settings: 
-SECRET_KEY 
-SOCIAL_AUTH_VK_OAUTH2_KEY
-SOCIAL_AUTH_VK_OAUTH2_SECRET
+## Stack
+
+Python 3, Django, VK auth with social-auth-app-django 
+
+## Steps to run
+
+1. Fill secret keys in `config/credentials.py` 
+2. Install deps: `pipenv install` & `pipenv shell`
+3. Prepare local db by using migrations: `python .\src\manage.py makemigrations` & `python .\src\manage.py migrate `
